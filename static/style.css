@@ -1,0 +1,984 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: "Inter", Arial, sans-serif;
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef4ff 0%,
+            #f8f0ff 100%
+        );
+
+    color: #18213a;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+    width: 100%;
+
+    padding: 18px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: white;
+
+    box-shadow:
+        0 2px 15px rgba(0, 0, 0, 0.07);
+}
+
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #667eea,
+            #764ba2
+        );
+
+    box-shadow:
+        0 8px 20px
+        rgba(102, 126, 234, 0.25);
+}
+
+
+.logo h2 {
+    font-size: 20px;
+}
+
+
+.logo span {
+    display: block;
+
+    font-size: 11px;
+
+    color: #777;
+
+    margin-top: 2px;
+}
+
+
+.nav-status {
+    padding: 9px 15px;
+
+    border-radius: 30px;
+
+    background: #eafff5;
+
+    color: #22966b;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.status-dot {
+    display: inline-block;
+
+    width: 8px;
+    height: 8px;
+
+    background: #20c997;
+
+    border-radius: 50%;
+
+    margin-right: 5px;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.container {
+    width: 86%;
+
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 50px;
+
+    align-items: center;
+
+    padding: 60px 0;
+}
+
+
+.badge {
+    display: inline-block;
+
+    padding: 9px 15px;
+
+    border-radius: 30px;
+
+    background: white;
+
+    color: #6758d6;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0, 0, 0, 0.05);
+}
+
+
+.hero h1 {
+    font-size: 55px;
+
+    line-height: 1.1;
+
+    margin-bottom: 20px;
+
+    letter-spacing: -2px;
+}
+
+
+.hero h1 span {
+    display: block;
+
+    color: #705de7;
+}
+
+
+.hero p {
+    max-width: 570px;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    color: #687186;
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.hero-image {
+    height: 350px;
+
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.floating-card {
+    position: absolute;
+
+    bottom: 20px;
+    left: 20px;
+
+    padding: 15px;
+
+    background: white;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+.floating-icon {
+    font-size: 25px;
+}
+
+
+.floating-card strong {
+    display: block;
+}
+
+
+.floating-card small {
+    display: block;
+
+    color: #777;
+
+    margin-top: 3px;
+}
+
+
+/* =====================================================
+   STUDY CARD
+===================================================== */
+
+.study-card {
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 15px 45px
+        rgba(0, 0, 0, 0.08);
+}
+
+
+.card-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+
+.card-header h2 {
+    margin-bottom: 8px;
+}
+
+
+.card-header p {
+    color: #777;
+}
+
+
+.brain {
+    font-size: 30px;
+
+    padding: 15px;
+
+    border-radius: 15px;
+
+    background: #f0edff;
+}
+
+
+/* =====================================================
+   LABEL
+===================================================== */
+
+.section-label {
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    margin-bottom: 12px;
+}
+
+
+.question-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.question-heading #charCount {
+    font-size: 11px;
+
+    color: #999;
+
+    margin-bottom: 12px;
+}
+
+
+/* =====================================================
+   MODE GRID
+===================================================== */
+
+.mode-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+}
+
+
+.mode-option input {
+    display: none;
+}
+
+
+.mode-card {
+    padding: 18px;
+
+    border: 2px solid #eeeeee;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.mode-card:hover {
+    border-color: #7567e8;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(117, 103, 232, 0.1);
+}
+
+
+.mode-option input:checked + .mode-card {
+    border-color: #7567e8;
+
+    background: #f5f3ff;
+
+    box-shadow:
+        0 5px 20px
+        rgba(117, 103, 232, 0.1);
+}
+
+
+.mode-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 20px;
+
+    flex-shrink: 0;
+}
+
+
+.blue {
+    background: #eaf1ff;
+}
+
+
+.purple {
+    background: #f1eaff;
+}
+
+
+.orange {
+    background: #fff1df;
+}
+
+
+.green {
+    background: #e6faf2;
+}
+
+
+.mode-card strong {
+    display: block;
+
+    font-size: 13px;
+}
+
+
+.mode-card span {
+    display: block;
+
+    font-size: 10px;
+
+    color: #888;
+
+    margin-top: 3px;
+}
+
+
+/* =====================================================
+   QUESTION
+===================================================== */
+
+.question-box {
+    border: 2px solid #eeeeee;
+
+    border-radius: 17px;
+
+    overflow: hidden;
+
+    transition: 0.2s;
+}
+
+
+.question-box:focus-within {
+    border-color: #7567e8;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(117, 103, 232, 0.08);
+}
+
+
+textarea {
+    width: 100%;
+
+    min-height: 140px;
+
+    border: none;
+
+    outline: none;
+
+    padding: 20px;
+
+    resize: vertical;
+
+    font-family: "Inter", Arial, sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    color: #222;
+}
+
+
+.question-bottom {
+    padding: 13px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-top: 1px solid #eeeeee;
+}
+
+
+.question-bottom > span {
+    font-size: 11px;
+
+    color: #888;
+}
+
+
+.button-group {
+    display: flex;
+
+    gap: 8px;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+button {
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 12px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #667eea,
+            #764ba2
+        );
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 20px
+        rgba(102, 126, 234, 0.25);
+}
+
+
+button:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+.clear-btn {
+    color: #555;
+
+    background: #f1f1f5;
+
+    box-shadow: none;
+}
+
+
+.clear-btn:hover {
+    background: #e7e7ed;
+
+    box-shadow: none;
+}
+
+
+/* =====================================================
+   EXAMPLES
+===================================================== */
+
+.examples {
+    margin-top: 25px;
+}
+
+
+.examples > strong {
+    display: block;
+
+    font-size: 12px;
+
+    color: #666;
+
+    margin-bottom: 10px;
+}
+
+
+.example-buttons {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+.example-buttons button {
+    padding: 8px 13px;
+
+    color: #6656d8;
+
+    background: #f3f1ff;
+
+    font-size: 11px;
+
+    box-shadow: none;
+}
+
+
+.example-buttons button:hover {
+    background: #e9e5ff;
+
+    box-shadow: none;
+}
+
+
+/* =====================================================
+   ANSWER
+===================================================== */
+
+.answer-card {
+    margin-top: 30px;
+
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 15px 45px
+        rgba(0, 0, 0, 0.08);
+
+    border-left: 5px solid #7567e8;
+
+    animation:
+        answerAppear 0.4s ease;
+}
+
+
+@keyframes answerAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+.answer-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border-bottom:
+        1px solid #eeeeee;
+
+    padding-bottom: 20px;
+}
+
+
+.ai-avatar {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 14px;
+
+    background: #f0edff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 23px;
+}
+
+
+.answer-header p {
+    color: #888;
+
+    font-size: 11px;
+
+    margin-top: 3px;
+}
+
+
+.answer-content {
+    padding-top: 20px;
+
+    white-space: pre-wrap;
+
+    line-height: 1.8;
+
+    color: #444;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.features {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin: 30px 0 50px;
+}
+
+
+/*
+   IMPORTANT:
+
+   These are buttons now, not simple divs.
+   Therefore they can actually perform actions.
+*/
+
+.feature-button {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 20px;
+
+    background: white;
+
+    color: #18213a;
+
+    border-radius: 18px;
+
+    text-align: left;
+
+    border: 2px solid transparent;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0, 0, 0, 0.03);
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.feature-button:hover {
+    border-color: #7567e8;
+
+    background: #fbfaff;
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(117, 103, 232, 0.12);
+}
+
+
+.feature-button:active {
+    transform:
+        translateY(-1px);
+}
+
+
+.feature-icon {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 12px;
+
+    background: #f0edff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 19px;
+
+    flex-shrink: 0;
+}
+
+
+.feature-button strong {
+    display: block;
+
+    font-size: 13px;
+}
+
+
+.feature-button p {
+    font-size: 11px;
+
+    color: #888;
+
+    margin-top: 5px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    text-align: center;
+
+    padding: 25px;
+
+    color: #888;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1000px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+
+    .mode-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .navbar {
+        padding: 15px 4%;
+    }
+
+
+    .nav-status {
+        font-size: 11px;
+
+        padding: 7px 10px;
+    }
+
+
+    .container {
+        width: 92%;
+    }
+
+
+    .hero {
+        padding: 40px 0;
+    }
+
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+
+    .hero-image {
+        height: 280px;
+    }
+
+
+    .study-card {
+        padding: 22px;
+    }
+
+
+    .mode-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+
+    .question-bottom {
+        flex-direction: column;
+
+        gap: 15px;
+
+        align-items: stretch;
+    }
+
+
+    .question-bottom > span {
+        text-align: center;
+    }
+
+
+    .button-group {
+        justify-content: flex-end;
+    }
+
+
+    .example-buttons {
+        flex-direction: column;
+    }
+
+
+    .example-buttons button {
+        width: 100%;
+    }
+
+}

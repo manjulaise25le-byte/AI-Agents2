@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>StudyAI - AI Study Assistant</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🤖
+        </div>
+
+        <div>
+
+            <h2>StudyAI</h2>
+
+            <span>
+                Smart Learning Assistant
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="nav-status">
+
+        <span class="status-dot"></span>
+
+        {{ api_status }}
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="container">
+
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <div class="badge">
+                ✨ AI POWERED LEARNING
+            </div>
+
+
+            <h1>
+
+                Your Personal
+
+                <span>
+                    AI Study Assistant
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Learn faster, understand difficult
+                topics, and prepare for exams with
+                your intelligent study companion.
+
+            </p>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <img
+                src="{{ url_for('static', filename='study.jpg') }}"
+                alt="Student studying with AI"
+            >
+
+
+            <div class="floating-card">
+
+                <span class="floating-icon">
+                    🧠
+                </span>
+
+                <div>
+
+                    <strong>
+                        Smart Learning
+                    </strong>
+
+                    <small>
+
+                        {% if api_status == "AI Ready" %}
+                            AI is ready to help
+                        {% else %}
+                            Demo mode is ready
+                        {% endif %}
+
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         STUDY ASSISTANT
+    ================================================== -->
+
+    <section class="study-card">
+
+
+        <div class="card-header">
+
+            <div>
+
+                <h2>
+                    Ask Your Question
+                </h2>
+
+                <p>
+                    Choose an AI learning method
+                    and ask anything you want to study.
+                </p>
+
+            </div>
+
+
+            <div class="brain">
+                🧠
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FORM
+        ================================================== -->
+
+        <form method="POST"
+              id="studyForm">
+
+
+            <label class="section-label">
+
+                Choose Learning Method
+
+            </label>
+
+
+            <div class="mode-grid">
+
+
+                <!-- ZERO SHOT -->
+
+                <label class="mode-option">
+
+                    <input
+                        type="radio"
+                        name="mode"
+                        value="zero"
+
+                        {% if selected_mode == "zero" %}
+                        checked
+                        {% endif %}
+                    >
+
+                    <div class="mode-card">
+
+                        <div class="mode-icon blue">
+                            🎯
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Zero-Shot
+                            </strong>
+
+                            <span>
+                                Direct answer
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </label>
+
+
+                <!-- FEW SHOT -->
+
+                <label class="mode-option">
+
+                    <input
+                        type="radio"
+                        name="mode"
+                        value="few"
+
+                        {% if selected_mode == "few" %}
+                        checked
+                        {% endif %}
+                    >
+
+                    <div class="mode-card">
+
+                        <div class="mode-icon purple">
+                            📚
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Few-Shot
+                            </strong>
+
+                            <span>
+                                Learn from examples
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </label>
+
+
+                <!-- ROLE PROMPT -->
+
+                <label class="mode-option">
+
+                    <input
+                        type="radio"
+                        name="mode"
+                        value="role"
+
+                        {% if selected_mode == "role" %}
+                        checked
+                        {% endif %}
+                    >
+
+                    <div class="mode-card">
+
+                        <div class="mode-icon orange">
+                            👨‍🏫
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Role Prompt
+                            </strong>
+
+                            <span>
+                                Teacher explanation
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </label>
+
+
+                <!-- FAQ -->
+
+                <label class="mode-option">
+
+                    <input
+                        type="radio"
+                        name="mode"
+                        value="faq"
+
+                        {% if selected_mode == "faq" %}
+                        checked
+                        {% endif %}
+                    >
+
+                    <div class="mode-card">
+
+                        <div class="mode-icon green">
+                            💬
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                College FAQ
+                            </strong>
+
+                            <span>
+                                College questions
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </label>
+
+            </div>
+
+
+            <!-- =================================================
+                 QUESTION
+            ================================================== -->
+
+            <div class="question-heading">
+
+                <label class="section-label">
+
+                    Your Question
+
+                </label>
+
+                <span id="charCount">
+                    0 / 5000
+                </span>
+
+            </div>
+
+
+            <div class="question-box">
+
+                <textarea
+                    id="question"
+                    name="question"
+                    maxlength="5000"
+                    placeholder="Example: Explain polymorphism in Java with an example..."
+                    required
+                >{{ question }}</textarea>
+
+
+                <div class="question-bottom">
+
+                    <span>
+
+                        💡 Ask a technical or study question
+
+                    </span>
+
+
+                    <div class="button-group">
+
+                        <button
+                            type="button"
+                            class="clear-btn"
+                            onclick="clearQuestion()"
+                        >
+                            Clear
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            id="askButton"
+                        >
+                            ✨ Ask AI
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </form>
+
+
+        <!-- =================================================
+             EXAMPLES
+        ================================================== -->
+
+        <div class="examples">
+
+            <strong>
+                Try an example:
+            </strong>
+
+
+            <div class="example-buttons">
+
+                <button
+                    type="button"
+                    onclick="useExample(
+                        'Explain polymorphism in Java with an example'
+                    )"
+                >
+                    Java Polymorphism
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="useExample(
+                        'What is inheritance in Java?'
+                    )"
+                >
+                    Java Inheritance
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="useExample(
+                        'What is RAM?'
+                    )"
+                >
+                    RAM
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="useExample(
+                        'How should I prepare for exams?'
+                    )"
+                >
+                    Exam Preparation
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         ANSWER
+    ================================================== -->
+
+    {% if answer %}
+
+    <section class="answer-card">
+
+        <div class="answer-header">
+
+            <div class="ai-avatar">
+                🤖
+            </div>
+
+
+            <div>
+
+                <h2>
+                    AI Answer
+                </h2>
+
+
+                <p>
+
+                    {% if answer_source == "ai" %}
+
+                        Generated using AI
+
+                    {% elif answer_source == "demo" %}
+
+                        Generated using Demo Mode
+
+                    {% else %}
+
+                        StudyAI
+
+                    {% endif %}
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="answer-content">
+
+            {{ answer }}
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+    <!-- =================================================
+         WORKING FEATURES
+    ================================================== -->
+
+    <section class="features">
+
+
+        <!-- =================================================
+             SIMPLE EXPLANATIONS
+        ================================================== -->
+
+        <button
+            type="button"
+            class="feature feature-button"
+            onclick="simpleExplanation()"
+        >
+
+            <div class="feature-icon">
+
+                🎯
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Simple Explanations
+                </strong>
+
+                <p>
+                    Easy language for students
+                </p>
+
+            </div>
+
+        </button>
+
+
+        <!-- =================================================
+             EXAM FRIENDLY
+        ================================================== -->
+
+        <button
+            type="button"
+            class="feature feature-button"
+            onclick="examFriendly()"
+        >
+
+            <div class="feature-icon">
+
+                📖
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Exam Friendly
+                </strong>
+
+                <p>
+                    Useful for exam preparation
+                </p>
+
+            </div>
+
+        </button>
+
+
+        <!-- =================================================
+             INSTANT ANSWERS
+        ================================================== -->
+
+        <button
+            type="button"
+            class="feature feature-button"
+            onclick="instantAnswer()"
+        >
+
+            <div class="feature-icon">
+
+                ⚡
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Instant Answers
+                </strong>
+
+                <p>
+                    Get help whenever you need
+                </p>
+
+            </div>
+
+        </button>
+
+
+    </section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <p>
+        🤖 StudyAI · Intelligent College Study Assistant
+    </p>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+const questionBox =
+    document.getElementById("question");
+
+
+const charCount =
+    document.getElementById("charCount");
+
+
+const form =
+    document.getElementById("studyForm");
+
+
+const askButton =
+    document.getElementById("askButton");
+
+
+
+/* =====================================================
+   CHARACTER COUNTER
+===================================================== */
+
+function updateCounter() {
+
+    const length =
+        questionBox.value.length;
+
+    charCount.textContent =
+        length + " / 5000";
+
+}
+
+
+questionBox.addEventListener(
+    "input",
+    updateCounter
+);
+
+
+updateCounter();
+
+
+
+/* =====================================================
+   EXAMPLE QUESTION
+===================================================== */
+
+function useExample(question) {
+
+    questionBox.value = question;
+
+    updateCounter();
+
+    questionBox.focus();
+
+    questionBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+
+
+/* =====================================================
+   CLEAR
+===================================================== */
+
+function clearQuestion() {
+
+    questionBox.value = "";
+
+    updateCounter();
+
+    questionBox.focus();
+
+}
+
+
+
+/* =====================================================
+   SELECT MODE
+===================================================== */
+
+function selectMode(mode) {
+
+    const radio =
+        document.querySelector(
+            'input[name="mode"][value="' +
+            mode +
+            '"]'
+        );
+
+    if (radio) {
+
+        radio.checked = true;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   FEATURE 1
+   SIMPLE EXPLANATIONS
+===================================================== */
+
+function simpleExplanation() {
+
+    selectMode("zero");
+
+    questionBox.value =
+        "Explain a difficult topic in simple language for a beginner. Include a definition, easy explanation, example, and important points.";
+
+    updateCounter();
+
+    questionBox.focus();
+
+    questionBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+
+
+/* =====================================================
+   FEATURE 2
+   EXAM FRIENDLY
+===================================================== */
+
+function examFriendly() {
+
+    selectMode("role");
+
+    questionBox.value =
+        "Explain an important college topic for exam preparation. Give the definition, detailed explanation, example, important exam points, and a short revision summary.";
+
+    updateCounter();
+
+    questionBox.focus();
+
+    questionBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+
+
+/* =====================================================
+   FEATURE 3
+   INSTANT ANSWERS
+===================================================== */
+
+function instantAnswer() {
+
+    selectMode("zero");
+
+    questionBox.value = "";
+
+    questionBox.placeholder =
+        "Type your question here and click Ask AI...";
+
+    updateCounter();
+
+    questionBox.focus();
+
+    questionBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+form.addEventListener(
+    "submit",
+    function() {
+
+        if (
+            questionBox.value.trim() === ""
+        ) {
+
+            return;
+
+        }
+
+
+        askButton.disabled = true;
+
+        askButton.innerHTML =
+            "⏳ Thinking...";
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>
